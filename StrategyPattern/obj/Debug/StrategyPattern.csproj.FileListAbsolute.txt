@@ -4,3 +4,9 @@ C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\StrategyPattern\StrategyPattern\bin
 C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\StrategyPattern\StrategyPattern\bin\Debug\StrategyPattern.pdb
 C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\StrategyPattern\StrategyPattern\obj\Debug\StrategyPattern.exe
 C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\StrategyPattern\StrategyPattern\obj\Debug\StrategyPattern.pdb
+C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\repo\StrategyPattern\StrategyPattern\bin\Debug\StrategyPattern.exe.config
+C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\repo\StrategyPattern\StrategyPattern\obj\Debug\StrategyPattern.exe
+C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\repo\StrategyPattern\StrategyPattern\obj\Debug\StrategyPattern.pdb
+C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\repo\StrategyPattern\StrategyPattern\bin\Debug\StrategyPattern.exe
+C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\repo\StrategyPattern\StrategyPattern\bin\Debug\StrategyPattern.pdb
+C:\Users\gen02859\Desktop\Sedo.Sosi.FrontEnd\repo\StrategyPattern\StrategyPattern\obj\Debug\StrategyPattern.csprojResolveAssemblyReference.cache

@@ -8,16 +8,21 @@ namespace StrategyPattern
 {
   class Program
   {
-    abstract class AbstractValidator<T>
+    interface IValidationStrategy
+    {
+      void Validate();
+    }
+
+    abstract class AbstractValidationStrategy<T> : IValidationStrategy
     {
       protected T ObjToValidate { get; set; }
 
-      public AbstractValidator(T obj)
+      public AbstractValidationStrategy(T obj)
       {
-        ObjToValidate = obj; 
+        ObjToValidate = obj;
       }
 
-
+      // Algorithme encapsulé
       public abstract void Validate();
     }
 
@@ -27,19 +32,7 @@ namespace StrategyPattern
       public int Age { get; set; }
     }
 
-    class UserValidator : AbstractValidator<User>
-    {
-      public UserValidator(User obj) : base(obj)
-      {
-      }
-
-      public override void Validate()
-      {
-        if (this.ObjToValidate.FirstName == null) throw new Exception("A user needs a first name");
-      }
-    }
-
-    class UserOver18Validator : AbstractValidator<User>
+    class UserOver18Validator : AbstractValidationStrategy<User>
     {
       public UserOver18Validator(User obj) : base(obj)
       {
@@ -47,22 +40,30 @@ namespace StrategyPattern
 
       public override void Validate()
       {
+        // Algorithme encapsulé
         if (this.ObjToValidate.Age < 18) throw new Exception("User must be over 18");
       }
     }
 
-    class ValidationContext<T>
+    class ValidationContext
     {
-      private AbstractValidator<T> Validator { get; set; }
+      private List<IValidationStrategy> Validators { get; set; }
 
-      public ValidationContext(AbstractValidator<T> validator)
+      public ValidationContext()
       {
-        this.Validator = validator;
+        Validators = new List<IValidationStrategy>();
       }
 
-      public void ApplyValidation()
+      public ValidationContext AddValidationStrategy(IValidationStrategy validationStrategy)
       {
-        this.Validator.Validate();
+        Validators.Add(validationStrategy);
+        return this;
+      }
+
+      public ValidationContext ApplyValidations()
+      {
+        this.Validators.ForEach(x => x.Validate());
+        return this;
       }
     }
 
@@ -75,33 +76,9 @@ namespace StrategyPattern
         Age = 14
       };
 
-      
-
-      try
-      {
-        ValidationContext<User> context = new ValidationContext<User>(new UserOver18Validator(someoneTooYoung));
-        context.ApplyValidation();
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine(e.Message);
-      }
-
-      User someUnnamedOne = new User()
-      {
-        FirstName = null,
-        Age = 42
-      };
-
-      try
-      {
-        ValidationContext<User> context = new ValidationContext<User>(new UserValidator(someUnnamedOne));
-        context.ApplyValidation();
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine(e.Message);
-      }
+      ValidationContext context = new ValidationContext()
+        .AddValidationStrategy(new UserOver18Validator(someoneTooYoung))
+        .ApplyValidations();
 
     }
   }
